@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../RELONS.png" type="image/png">
+    <title>Daftar - RELONS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 20px;
+        }
+        
+        .auth-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .auth-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .auth-logo h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin: 0;
+        }
+        
+        .auth-title {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+        
+        .auth-form {
+            text-align: left;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+        
+        .form-group input,
+        .form-group select {
+            padding-left: 45px;
+            height: 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .auth-btn {
+            width: 100%;
+            height: 50px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+        
+        .auth-btn:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+        }
+        
+        .auth-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .auth-links {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .auth-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+        
+        .back-home:hover {
+            color: #e5e7eb;
+        }
+        
+        .info-box {
+            background: #eff6ff;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        
+        .info-box i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        
+        .checkbox-group label {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            cursor: pointer;
+        }
+        
+        .checkbox-group a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .checkbox-group a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Kembali ke Beranda
+    </a>
+    
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <img src="../RELONS.png" alt="RELONS Logo">
+                <h1>RELONS</h1>
+            </div>
+            
+            <h2 class="auth-title">Daftar Akun Baru</h2>
+            
+            <div class="info-box">
+                <i class="fas fa-info-circle"></i>
+                <strong>Catatan:</strong> Mahasiswa UMN dapat langsung login dengan email @student.umn.ac.id tanpa perlu mendaftar.
+            </div>
+            
+            <form class="auth-form" id="registerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="firstName" name="firstName" placeholder="Nama Depan" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="lastName" name="lastName" placeholder="Nama Belakang" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Konfirmasi Password" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="phone" name="phone" placeholder="Nomor Telepon" required>
+                </div>
+                
+                <div class="form-group">
+                    <i class="fas fa-users"></i>
+                    <select id="role" name="role" required>
+                        <option value="">Pilih Status Anda</option>
+                        <option value="dosen">Dosen/Staff UMN</option>
+                        <option value="mahasiswa_non_umn">Mahasiswa Non-UMN</option>
+                        <option value="orang_tua">Orang Tua/Wali</option>
+                        <option value="alumni">Alumni UMN</option>
+                        <option value="masyarakat">Masyarakat Umum</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <i class="fas fa-building"></i>
+                    <input type="text" id="institution" name="institution" placeholder="Institusi/Asal (Opsional)">
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label for="agreeTerms">
+                        Saya setuju dengan <a href="#" onclick="showTerms()">Syarat & Ketentuan</a> dan <a href="#" onclick="showPrivacy()">Kebijakan Privasi</a> RELONS
+                    </label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreeNewsletter" name="agreeNewsletter">
+                    <label for="agreeNewsletter">
+                        Saya ingin menerima newsletter dan update tentang program anti-bullying
+                    </label>
+                </div>
+                
+                <button type="submit" class="auth-btn" id="registerBtn">
+                    <i class="fas fa-user-plus"></i> Daftar Sekarang
+                </button>
+            </form>
+            
+            <div class="auth-links">
+                <p>Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is already logged in
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                window.location.href = '../index.html';
+                return;
+            }
+            
+            const registerForm = document.getElementById('registerForm');
+            const registerBtn = document.getElementById('registerBtn');
+            
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(e.target);
+                const userData = Object.fromEntries(formData.entries());
+                
+                // Validate form
+                if (!validateForm(userData)) {
+                    return;
+                }
+                
+                // Show loading state
+                registerBtn.disabled = true;
+                registerBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mendaftar...';
+                
+                // Simulate API call delay
+                setTimeout(() => {
+                    if (registerUser(userData)) {
+                        RELONS.showAlert('Pendaftaran berhasil! Selamat datang di RELONS.', 'success');
+                        setTimeout(() => {
+                            window.location.href = '../index.html';
+                        }, 1500);
+                    } else {
+                        RELONS.showAlert('Email sudah terdaftar! Silakan gunakan email lain atau login.', 'error');
+                        registerBtn.disabled = false;
+                        registerBtn.innerHTML = '<i class="fas fa-user-plus"></i> Daftar Sekarang';
+                    }
+                }, 1500);
+            });
+        });
+        
+        function validateForm(userData) {
+            // Check required fields
+            if (!userData.firstName || !userData.lastName || !userData.email || 
+                !userData.password || !userData.confirmPassword || !userData.phone || !userData.role) {
+                RELONS.showAlert('Mohon lengkapi semua field yang wajib diisi!', 'error');
+                return false;
+            }
+            
+            // Check email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(userData.email)) {
+                RELONS.showAlert('Format email tidak valid!', 'error');
+                return false;
+            }
+            
+            // Check password length
+            if (userData.password.length < 6) {
+                RELONS.showAlert('Password minimal 6 karakter!', 'error');
+                return false;
+            }
+            
+            // Check password confirmation
+            if (userData.password !== userData.confirmPassword) {
+                RELONS.showAlert('Konfirmasi password tidak cocok!', 'error');
+                return false;
+            }
+            
+            // Check phone format (basic validation)
+            const phoneRegex = /^[\d\-\+\(\)\s]+$/;
+            if (!phoneRegex.test(userData.phone)) {
+                RELONS.showAlert('Format nomor telepon tidak valid!', 'error');
+                return false;
+            }
+            
+            // Check terms agreement
+            if (!userData.agreeTerms) {
+                RELONS.showAlert('Anda harus menyetujui Syarat & Ketentuan!', 'error');
+                return false;
+            }
+            
+            return true;
+        }
+        
+        function registerUser(userData) {
+            // Get existing users
+            const users = JSON.parse(localStorage.getItem('relons_users') || '[]');
+            
+            // Check if email already exists
+            if (users.some(u => u.email.toLowerCase() === userData.email.toLowerCase())) {
+                return false;
+            }
+            
+            // Create new user
+            const newUser = {
+                id: 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                name: `${userData.firstName} ${userData.lastName}`,
+                email: userData.email,
+                phone: userData.phone,
+                role: userData.role,
+                institution: userData.institution || '',
+                password: userData.password,
+                newsletter: !!userData.agreeNewsletter,
+                createdAt: new Date().toISOString(),
+                isActive: true
+            };
+            
+            // Add to users array
+            users.push(newUser);
+            localStorage.setItem('relons_users', JSON.stringify(users));
+            
+            // Set current user (auto login after registration)
+            localStorage.setItem('currentUser', JSON.stringify({
+                id: newUser.id,
+                name: newUser.name,
+                email: newUser.email,
+                role: newUser.role,
+                loginTime: new Date().toISOString()
+            }));
+            
+            return true;
+        }
+        
+        function showTerms() {
+            RELONS.showAlert('Syarat & Ketentuan: Dengan mendaftar di RELONS, Anda setuju untuk menggunakan platform ini dengan bertanggung jawab dan mematuhi semua aturan yang berlaku.', 'info');
+        }
+        
+        function showPrivacy() {
+            RELONS.showAlert('Kebijakan Privasi: Data pribadi Anda akan dijaga kerahasiaannya dan hanya digunakan untuk keperluan sistem pelaporan bullying UMN.', 'info');
+        }
+    </script>
+</body>
+</html>

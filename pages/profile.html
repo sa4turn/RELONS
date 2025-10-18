@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Pengguna - RELONS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .main-content {
+            padding: 120px 0 80px;
+        }
+
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+        }
+
+        .profile-sidebar {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 140px;
+        }
+
+        .profile-avatar {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 0 auto;
+        }
+
+        .avatar-edit {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 35px;
+            height: 35px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            cursor: pointer;
+            border: 3px solid var(--white);
+            transition: var(--transition);
+        }
+
+        .avatar-edit:hover {
+            background: #dc2626;
+        }
+
+        .profile-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-role {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: 0.25rem;
+        }
+
+        .profile-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .profile-menu li {
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .profile-menu a:hover,
+        .profile-menu a.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .profile-content {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 2rem;
+        }
+
+        .content-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .content-header h2 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .content-header p {
+            color: var(--text-light);
+        }
+
+        .profile-section {
+            display: none;
+        }
+
+        .profile-section.active {
+            display: block;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .activity-icon.report {
+            background: var(--accent-color);
+        }
+
+        .activity-icon.forum {
+            background: var(--primary-color);
+        }
+
+        .activity-icon.education {
+            background: var(--success-color);
+        }
+
+        .activity-content h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .activity-content p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .activity-time {
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+
+        .settings-group {
+            margin-bottom: 2rem;
+        }
+
+        .settings-group h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .setting-info h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .setting-info p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 25px;
+            background: #cbd5e1;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .toggle-switch.active {
+            background: var(--primary-color);
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 21px;
+            height: 21px;
+            background: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(25px);
+        }
+
+        .danger-zone {
+            border: 2px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            background: #fef2f2;
+        }
+
+        .danger-zone h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .danger-zone p {
+            color: #7f1d1d;
+            margin-bottom: 1rem;
+        }
+
+        .btn-danger {
+            background: var(--accent-color);
+            color: var(--white);
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .profile-sidebar {
+                position: static;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="../RELONS.png" alt="RELONS Logo" class="logo">
+                    <h1>RELONS</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="education.html" class="nav-link">Edukasi</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="report.html" class="nav-link report-btn">Laporkan</a></li>
+                    <li><a href="tracking.html" class="nav-link">Tracking</a></li>
+                    <li><a href="news.html" class="nav-link">Berita</a></li>
+                    <li><a href="contact.html" class="nav-link">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="profile-container">
+                <!-- Profile Sidebar -->
+                <div class="profile-sidebar">
+                    <div class="profile-avatar">
+                        <div class="avatar-container">
+                            <div class="avatar" id="userAvatar">
+                                <!-- User initial will be displayed here -->
+                            </div>
+                            <div class="avatar-edit" onclick="changeAvatar()">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        <div class="profile-name" id="userName">Loading...</div>
+                        <div class="profile-role" id="userRole">Loading...</div>
+                    </div>
+
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" id="reportCount">0</div>
+                            <div class="stat-label">Laporan</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" id="forumCount">0</div>
+                            <div class="stat-label">Forum Post</div>
+                        </div>
+                    </div>
+
+                    <ul class="profile-menu">
+                        <li><a href="#" class="menu-item active" data-section="personal">
+                            <i class="fas fa-user"></i> Informasi Personal
+                        </a></li>
+                        <li><a href="#" class="menu-item" data-section="activity">
+                            <i class="fas fa-history"></i> Aktivitas Terbaru
+                        </a></li>
+                        <li><a href="#" class="menu-item" data-section="settings">
+                            <i class="fas fa-cog"></i> Pengaturan
+                        </a></li>
+                        <li><a href="#" class="menu-item" data-section="security">
+                            <i class="fas fa-shield-alt"></i> Keamanan
+                        </a></li>
+                    </ul>
+                </div>
+
+                <!-- Profile Content -->
+                <div class="profile-content">
+                    <!-- Personal Information Section -->
+                    <div class="profile-section active" id="personal">
+                        <div class="content-header">
+                            <h2>Informasi Personal</h2>
+                            <p>Kelola informasi pribadi dan data akun Anda</p>
+                        </div>
+
+                        <form id="personalInfoForm">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="fullName">Nama Lengkap</label>
+                                    <input type="text" id="fullName" name="fullName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Nomor Telepon</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="studentId">NIM (Jika Mahasiswa)</label>
+                                    <input type="text" id="studentId" name="studentId">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="bio">Bio</label>
+                                    <textarea id="bio" name="bio" rows="3" placeholder="Ceritakan sedikit tentang diri Anda..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Simpan Perubahan
+                                </button>
+                                <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                                    <i class="fas fa-undo"></i> Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Activity Section -->
+                    <div class="profile-section" id="activity">
+                        <div class="content-header">
+                            <h2>Aktivitas Terbaru</h2>
+                            <p>Lihat riwayat aktivitas Anda di platform RELONS</p>
+                        </div>
+
+                        <div id="activityList">
+                            <!-- Activities will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Settings Section -->
+                    <div class="profile-section" id="settings">
+                        <div class="content-header">
+                            <h2>Pengaturan</h2>
+                            <p>Atur preferensi dan notifikasi akun Anda</p>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3>Notifikasi</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Email Notifikasi</h4>
+                                    <p>Terima notifikasi melalui email untuk update laporan</p>
+                                </div>
+                                <div class="toggle-switch active" data-setting="emailNotif">
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Notifikasi Forum</h4>
+                                    <p>Terima notifikasi untuk balasan dan komentar di forum</p>
+                                </div>
+                                <div class="toggle-switch active" data-setting="forumNotif">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3>Privasi</h3>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Profil Publik</h4>
+                                    <p>Izinkan pengguna lain melihat profil Anda di forum</p>
+                                </div>
+                                <div class="toggle-switch" data-setting="publicProfile">
+                                </div>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Tampilkan Status Online</h4>
+                                    <p>Tampilkan status online Anda kepada pengguna lain</p>
+                                </div>
+                                <div class="toggle-switch" data-setting="onlineStatus">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Section -->
+                    <div class="profile-section" id="security">
+                        <div class="content-header">
+                            <h2>Keamanan</h2>
+                            <p>Kelola keamanan akun dan data pribadi Anda</p>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3>Password</h3>
+                            <form id="changePasswordForm">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label for="currentPassword">Password Saat Ini</label>
+                                        <input type="password" id="currentPassword" name="currentPassword" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="newPassword">Password Baru</label>
+                                        <input type="password" id="newPassword" name="newPassword" required>
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label for="confirmPassword">Konfirmasi Password Baru</label>
+                                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-key"></i> Ubah Password
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="danger-zone">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+                            <p>Tindakan berikut tidak dapat dibatalkan. Pastikan Anda yakin sebelum melanjutkan.</p>
+                            <button class="btn btn-danger" onclick="deleteAccount()">
+                                <i class="fas fa-trash"></i> Hapus Akun
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            initializeProfile(currentUser);
+            loadUserActivities();
+            initializeMenuNavigation();
+            initializeSettings();
+        });
+
+        function initializeProfile(user) {
+            // Set user info
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userRole').textContent = getRoleDisplay(user.role);
+            document.getElementById('userAvatar').textContent = user.name.charAt(0).toUpperCase();
+
+            // Fill form with user data
+            document.getElementById('fullName').value = user.name;
+            document.getElementById('email').value = user.email;
+            document.getElementById('phone').value = user.phone || '';
+            document.getElementById('studentId').value = user.studentId || '';
+
+            // Load user stats
+            loadUserStats(user.id);
+
+            // Setup form submission
+            document.getElementById('personalInfoForm').addEventListener('submit', handlePersonalInfoUpdate);
+            document.getElementById('changePasswordForm').addEventListener('submit', handlePasswordChange);
+        }
+
+        function getRoleDisplay(role) {
+            const roles = {
+                student: 'Mahasiswa UMN',
+                guest: 'Guest User',
+                admin: 'Administrator',
+                staff: 'Staff'
+            };
+            return roles[role] || role;
+        }
+
+        function loadUserStats(userId) {
+            // Load user statistics from localStorage
+            const reports = JSON.parse(localStorage.getItem('relons_reports') || '[]');
+            const forumPosts = JSON.parse(localStorage.getItem('forumPosts') || '[]');
+
+            const userReports = reports.filter(r => r.reporterId === userId);
+            const userForumPosts = forumPosts.filter(p => p.authorId === userId);
+
+            document.getElementById('reportCount').textContent = userReports.length;
+            document.getElementById('forumCount').textContent = userForumPosts.length;
+        }
+
+        function loadUserActivities() {
+            const activities = [
+                {
+                    type: 'report',
+                    title: 'Laporan Baru Dibuat',
+                    description: 'Anda telah membuat laporan bullying baru',
+                    time: '2 jam yang lalu'
+                },
+                {
+                    type: 'forum',
+                    title: 'Posting di Forum',
+                    description: 'Anda berbagi cerita di forum dukungan',
+                    time: '1 hari yang lalu'
+                },
+                {
+                    type: 'education',
+                    title: 'Menyelesaikan Kuis',
+                    description: 'Anda menyelesaikan kuis "Mengenali Bullying"',
+                    time: '3 hari yang lalu'
+                }
+            ];
+
+            const activityList = document.getElementById('activityList');
+            activityList.innerHTML = activities.map(activity => `
+                <div class="activity-item">
+                    <div class="activity-icon ${activity.type}">
+                        <i class="fas ${getActivityIcon(activity.type)}"></i>
+                    </div>
+                    <div class="activity-content">
+                        <h4>${activity.title}</h4>
+                        <p>${activity.description}</p>
+                        <div class="activity-time">${activity.time}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getActivityIcon(type) {
+            const icons = {
+                report: 'fa-flag',
+                forum: 'fa-comments',
+                education: 'fa-graduation-cap'
+            };
+            return icons[type] || 'fa-circle';
+        }
+
+        function initializeMenuNavigation() {
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all menu items and sections
+                    document.querySelectorAll('.menu-item').forEach(mi => mi.classList.remove('active'));
+                    document.querySelectorAll('.profile-section').forEach(ps => ps.classList.remove('active'));
+                    
+                    // Add active class to clicked item and corresponding section
+                    this.classList.add('active');
+                    const sectionId = this.dataset.section;
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+        }
+
+        function initializeSettings() {
+            document.querySelectorAll('.toggle-switch').forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const setting = this.dataset.setting;
+                    const isActive = this.classList.contains('active');
+                    
+                    // Save setting to localStorage
+                    const settings = JSON.parse(localStorage.getItem('userSettings') || '{}');
+                    settings[setting] = isActive;
+                    localStorage.setItem('userSettings', JSON.stringify(settings));
+                    
+                    RELONS.showAlert(`Pengaturan ${setting} ${isActive ? 'diaktifkan' : 'dinonaktifkan'}`, 'success');
+                });
+            });
+        }
+
+        function handlePersonalInfoUpdate(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const updatedData = Object.fromEntries(formData.entries());
+            
+            // Update current user data
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const updatedUser = { ...currentUser, ...updatedData };
+            
+            localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+            
+            // Update user in users array if exists
+            const users = JSON.parse(localStorage.getItem('relons_users') || '[]');
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            if (userIndex !== -1) {
+                users[userIndex] = { ...users[userIndex], ...updatedData };
+                localStorage.setItem('relons_users', JSON.stringify(users));
+            }
+            
+            // Update display
+            document.getElementById('userName').textContent = updatedData.fullName;
+            document.getElementById('userAvatar').textContent = updatedData.fullName.charAt(0).toUpperCase();
+            
+            RELONS.showAlert('Informasi personal berhasil diperbarui!', 'success');
+        }
+
+        function handlePasswordChange(e) {
+            e.preventDefault();
+            
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (newPassword !== confirmPassword) {
+                RELONS.showAlert('Konfirmasi password tidak cocok!', 'error');
+                return;
+            }
+            
+            if (newPassword.length < 6) {
+                RELONS.showAlert('Password baru minimal 6 karakter!', 'error');
+                return;
+            }
+            
+            // In a real app, this would verify the current password
+            // For demo purposes, we'll just update it
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const users = JSON.parse(localStorage.getItem('relons_users') || '[]');
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            
+            if (userIndex !== -1) {
+                users[userIndex].password = newPassword;
+                localStorage.setItem('relons_users', JSON.stringify(users));
+            }
+            
+            // Clear form
+            e.target.reset();
+            
+            RELONS.showAlert('Password berhasil diubah!', 'success');
+        }
+
+        function resetForm() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            document.getElementById('fullName').value = currentUser.name;
+            document.getElementById('email').value = currentUser.email;
+            document.getElementById('phone').value = currentUser.phone || '';
+            document.getElementById('studentId').value = currentUser.studentId || '';
+            document.getElementById('bio').value = '';
+        }
+
+        function changeAvatar() {
+            RELONS.showAlert('Fitur upload avatar akan segera tersedia!', 'info');
+        }
+
+        function deleteAccount() {
+            if (confirm('Apakah Anda yakin ingin menghapus akun? Tindakan ini tidak dapat dibatalkan.')) {
+                if (confirm('Semua data Anda akan dihapus permanen. Lanjutkan?')) {
+                    // Remove user from localStorage
+                    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                    const users = JSON.parse(localStorage.getItem('relons_users') || '[]');
+                    const updatedUsers = users.filter(u => u.id !== currentUser.id);
+                    
+                    localStorage.setItem('relons_users', JSON.stringify(updatedUsers));
+                    localStorage.removeItem('currentUser');
+                    
+                    RELONS.showAlert('Akun berhasil dihapus. Anda akan diarahkan ke halaman utama.', 'success');
+                    
+                    setTimeout(() => {
+                        window.location.href = '../index.html';
+                    }, 2000);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

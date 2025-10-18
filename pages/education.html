@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Edukasi - RELONS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="../RELONS.png" alt="RELONS Logo" class="logo">
+                    <h1>RELONS</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="education.html" class="nav-link">Edukasi</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="report.html" class="nav-link report-btn">Laporkan</a></li>
+                    <li><a href="tracking.html" class="nav-link">Tracking</a></li>
+                    <li><a href="news.html" class="nav-link">Berita</a></li>
+                    <li><a href="contact.html" class="nav-link">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1><i class="fas fa-graduation-cap"></i> Modul Edukasi Anti-Bullying</h1>
+                <p>Pelajari tentang bullying, dampaknya, dan cara pencegahannya untuk menciptakan lingkungan kampus yang aman.</p>
+            </div>
+
+            <div class="downloads-section">
+                <h2>Download Materi</h2>
+                <div class="downloads-grid">
+                    <div class="download-card" onclick="downloadHandbook()">
+                        <i class="fas fa-book"></i>
+                        <h3>Handbook Anti-Bullying</h3>
+                        <p>Panduan lengkap tentang bullying dan pencegahannya</p>
+                        <span class="download-btn">Download PDF</span>
+                    </div>
+                    <div class="download-card" onclick="downloadSanctions()">
+                        <i class="fas fa-gavel"></i>
+                        <h3>Daftar Sanksi</h3>
+                        <p>Sanksi dan konsekuensi untuk pelaku bullying</p>
+                        <span class="download-btn">Download PDF</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="education-content">
+                <div class="content-section">
+                    <h2><i class="fas fa-question-circle"></i> Apa itu Bullying?</h2>
+                    <div class="content-card">
+                        <div class="content-text">
+                            <p>Bullying adalah perilaku agresif yang dilakukan secara berulang dan melibatkan ketidakseimbangan kekuatan, baik fisik maupun psikologis. Bullying dapat terjadi dalam berbagai bentuk dan dapat memberikan dampak serius bagi korban.</p>
+                            
+                            <h4>Karakteristik Bullying:</h4>
+                            <ul>
+                                <li><strong>Berulang:</strong> Terjadi secara terus-menerus dalam periode waktu tertentu</li>
+                                <li><strong>Ketidakseimbangan kekuatan:</strong> Pelaku memiliki kekuatan lebih (fisik, sosial, atau psikologis)</li>
+                                <li><strong>Disengaja:</strong> Dilakukan dengan tujuan untuk menyakiti atau mengintimidasi</li>
+                                <li><strong>Merugikan:</strong> Menimbulkan dampak negatif bagi korban</li>
+                            </ul>
+                        </div>
+                        <div class="content-media">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Stop Bullying">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-list"></i> Jenis-Jenis Bullying</h2>
+                    <div class="types-grid">
+                        <div class="type-card">
+                            <div class="type-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Bullying Verbal</h3>
+                            <p>Penggunaan kata-kata untuk menyakiti, seperti ejekan, ancaman, atau komentar yang merendahkan.</p>
+                            <div class="examples">
+                                <strong>Contoh:</strong>
+                                <ul>
+                                    <li>Memanggil dengan nama yang merendahkan</li>
+                                    <li>Mengancam secara verbal</li>
+                                    <li>Menghina penampilan atau kemampuan</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <div class="type-icon">
+                                <i class="fas fa-fist-raised"></i>
+                            </div>
+                            <h3>Bullying Fisik</h3>
+                            <p>Kekerasan fisik atau ancaman kekerasan yang dapat melukai tubuh korban.</p>
+                            <div class="examples">
+                                <strong>Contoh:</strong>
+                                <ul>
+                                    <li>Memukul, menendang, atau mendorong</li>
+                                    <li>Merusak barang milik korban</li>
+                                    <li>Menghalangi jalan atau mengurung</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <div class="type-icon">
+                                <i class="fas fa-users-slash"></i>
+                            </div>
+                            <h3>Bullying Sosial</h3>
+                            <p>Pengucilan atau manipulasi hubungan sosial untuk menyakiti korban secara emosional.</p>
+                            <div class="examples">
+                                <strong>Contoh:</strong>
+                                <ul>
+                                    <li>Mengucilkan dari kelompok</li>
+                                    <li>Menyebarkan rumor atau gosip</li>
+                                    <li>Mempermalukan di depan umum</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <div class="type-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <h3>Cyberbullying</h3>
+                            <p>Bullying yang terjadi melalui platform digital seperti media sosial, email, atau aplikasi pesan.</p>
+                            <div class="examples">
+                                <strong>Contoh:</strong>
+                                <ul>
+                                    <li>Mengirim pesan mengancam online</li>
+                                    <li>Menyebarkan foto/video memalukan</li>
+                                    <li>Membuat akun palsu untuk menghina</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <div class="type-icon">
+                                <i class="fas fa-heart-broken"></i>
+                            </div>
+                            <h3>Bullying Seksual</h3>
+                            <p>Perilaku yang tidak diinginkan bersifat seksual yang membuat korban merasa tidak nyaman.</p>
+                            <div class="examples">
+                                <strong>Contoh:</strong>
+                                <ul>
+                                    <li>Komentar atau lelucon seksual</li>
+                                    <li>Sentuhan yang tidak diinginkan</li>
+                                    <li>Penyebaran konten seksual</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="type-card">
+                            <div class="type-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3>Bullying Akademik</h3>
+                            <p>Tekanan berlebihan atau perlakuan tidak adil dalam konteks akademik.</p>
+                            <div class="examples">
+                                <strong>Contoh:</strong>
+                                <ul>
+                                    <li>Diskriminasi dalam penilaian</li>
+                                    <li>Tekanan berlebihan dari dosen/senior</li>
+                                    <li>Sabotase tugas atau proyek</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-exclamation-triangle"></i> Dampak Bullying</h2>
+                    <div class="impact-container">
+                        <div class="impact-category">
+                            <h3><i class="fas fa-brain"></i> Dampak Psikologis</h3>
+                            <ul>
+                                <li>Depresi dan kecemasan</li>
+                                <li>Rendahnya harga diri</li>
+                                <li>Trauma dan PTSD</li>
+                                <li>Gangguan tidur</li>
+                                <li>Pikiran untuk menyakiti diri sendiri</li>
+                            </ul>
+                        </div>
+                        <div class="impact-category">
+                            <h3><i class="fas fa-graduation-cap"></i> Dampak Akademik</h3>
+                            <ul>
+                                <li>Penurunan prestasi belajar</li>
+                                <li>Kesulitan konsentrasi</li>
+                                <li>Absensi yang tinggi</li>
+                                <li>Kehilangan motivasi belajar</li>
+                                <li>Risiko putus kuliah</li>
+                            </ul>
+                        </div>
+                        <div class="impact-category">
+                            <h3><i class="fas fa-users"></i> Dampak Sosial</h3>
+                            <ul>
+                                <li>Isolasi sosial</li>
+                                <li>Kesulitan membangun hubungan</li>
+                                <li>Kehilangan kepercayaan pada orang lain</li>
+                                <li>Menarik diri dari aktivitas sosial</li>
+                                <li>Masalah dalam komunikasi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-shield-alt"></i> Strategi Pencegahan</h2>
+                    <div class="prevention-grid">
+                        <div class="prevention-card">
+                            <h3><i class="fas fa-eye"></i> Kenali Tanda-Tanda</h3>
+                            <p>Pelajari cara mengenali tanda-tanda bullying pada diri sendiri dan orang lain.</p>
+                            <ul>
+                                <li>Perubahan perilaku mendadak</li>
+                                <li>Keengganan untuk bersosialisasi</li>
+                                <li>Penurunan prestasi akademik</li>
+                                <li>Tanda-tanda fisik kekerasan</li>
+                            </ul>
+                        </div>
+                        <div class="prevention-card">
+                            <h3><i class="fas fa-hands-helping"></i> Bangun Dukungan</h3>
+                            <p>Ciptakan jaringan dukungan yang kuat di lingkungan kampus.</p>
+                            <ul>
+                                <li>Bergabung dengan komunitas positif</li>
+                                <li>Membangun persahabatan yang sehat</li>
+                                <li>Mencari mentor atau konselor</li>
+                                <li>Aktif dalam kegiatan kampus</li>
+                            </ul>
+                        </div>
+                        <div class="prevention-card">
+                            <h3><i class="fas fa-voice"></i> Berani Bersuara</h3>
+                            <p>Jangan diam ketika melihat atau mengalami bullying.</p>
+                            <ul>
+                                <li>Laporkan kejadian bullying</li>
+                                <li>Dukung korban bullying</li>
+                                <li>Edukasi orang lain tentang bullying</li>
+                                <li>Jadilah bystander yang aktif</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-first-aid"></i> Apa yang Harus Dilakukan?</h2>
+                    <div class="action-steps">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h3>Jika Anda Menjadi Korban</h3>
+                            <ul>
+                                <li>Tetap tenang dan jangan membalas dengan kekerasan</li>
+                                <li>Dokumentasikan kejadian (foto, video, screenshot)</li>
+                                <li>Ceritakan kepada orang yang dipercaya</li>
+                                <li>Laporkan melalui RELONS atau Student Support</li>
+                                <li>Cari dukungan profesional jika diperlukan</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h3>Jika Anda Menjadi Saksi</h3>
+                            <ul>
+                                <li>Jangan diam, lakukan sesuatu yang aman</li>
+                                <li>Alihkan perhatian atau minta bantuan</li>
+                                <li>Dukung korban setelah kejadian</li>
+                                <li>Laporkan kejadian kepada pihak berwenang</li>
+                                <li>Jangan ikut menyebarkan konten bullying</li>
+                            </ul>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h3>Jika Anda Menyadari Melakukan Bullying</h3>
+                            <ul>
+                                <li>Akui kesalahan dan minta maaf dengan tulus</li>
+                                <li>Hentikan perilaku bullying segera</li>
+                                <li>Refleksikan dampak dari tindakan Anda</li>
+                                <li>Cari bantuan untuk mengubah perilaku</li>
+                                <li>Berkomitmen untuk tidak mengulangi</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-question"></i> Kuis Interaktif</h2>
+                    <div class="quiz-container">
+                        <div class="quiz-question" id="quizQuestion">
+                            <h3>Pertanyaan 1 dari 5</h3>
+                            <p>Manakah yang BUKAN termasuk karakteristik bullying?</p>
+                            <div class="quiz-options">
+                                <button class="quiz-option" onclick="selectAnswer(this, false)">A. Terjadi sekali saja</button>
+                                <button class="quiz-option" onclick="selectAnswer(this, true)">B. Ada ketidakseimbangan kekuatan</button>
+                                <button class="quiz-option" onclick="selectAnswer(this, false)">C. Dilakukan berulang kali</button>
+                                <button class="quiz-option" onclick="selectAnswer(this, false)">D. Disengaja untuk menyakiti</button>
+                            </div>
+                        </div>
+                        <div class="quiz-result" id="quizResult" style="display: none;">
+                            <h3>Hasil Kuis</h3>
+                            <p>Skor Anda: <span id="quizScore">0</span>/5</p>
+                            <button class="btn btn-primary" onclick="restartQuiz()">Ulangi Kuis</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <h2><i class="fas fa-play-circle"></i> Video Edukasi</h2>
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Video 1">
+                                <div class="play-button"><i class="fas fa-play"></i></div>
+                            </div>
+                            <h3>Mengenal Bullying di Kampus</h3>
+                            <p>Video pengenalan tentang berbagai bentuk bullying yang terjadi di lingkungan kampus.</p>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Video 2">
+                                <div class="play-button"><i class="fas fa-play"></i></div>
+                            </div>
+                            <h3>Cara Melaporkan Bullying</h3>
+                            <p>Panduan langkah demi langkah untuk melaporkan kasus bullying dengan aman.</p>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Video 3">
+                                <div class="play-button"><i class="fas fa-play"></i></div>
+                            </div>
+                            <h3>Dukungan untuk Korban</h3>
+                            <p>Informasi tentang berbagai bentuk dukungan yang tersedia untuk korban bullying.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RELONS</h3>
+                    <p>Sistem pelaporan bullying yang aman dan terpercaya untuk komunitas UMN.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak Darurat</h4>
+                    <p><i class="fas fa-phone"></i> +62 21 5422 0808</p>
+                    <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6d5d3d6d6c9d4d2e6d3cbc888c7c588cfc2">[email&#160;protected]</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RELONS - Universitas Multimedia Nusantara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../script.js"></script>
+    <script>
+        // Quiz functionality
+        const quizData = [
+            {
+                question: "Manakah yang BUKAN termasuk karakteristik bullying?",
+                options: ["A. Terjadi sekali saja", "B. Ada ketidakseimbangan kekuatan", "C. Dilakukan berulang kali", "D. Disengaja untuk menyakiti"],
+                correct: 0
+            },
+            {
+                question: "Apa yang sebaiknya dilakukan jika menjadi saksi bullying?",
+                options: ["A. Diam saja", "B. Ikut menertawakan", "C. Melaporkan kejadian", "D. Merekam untuk hiburan"],
+                correct: 2
+            },
+            {
+                question: "Cyberbullying adalah...",
+                options: ["A. Bullying melalui platform digital", "B. Bullying di cyber cafe", "C. Bullying tentang teknologi", "D. Bullying oleh robot"],
+                correct: 0
+            },
+            {
+                question: "Dampak psikologis bullying dapat berupa:",
+                options: ["A. Peningkatan prestasi", "B. Depresi dan kecemasan", "C. Lebih percaya diri", "D. Menjadi lebih kuat"],
+                correct: 1
+            },
+            {
+                question: "Platform untuk melaporkan bullying di UMN adalah:",
+                options: ["A. Instagram", "B. WhatsApp", "C. RELONS", "D. Email biasa"],
+                correct: 2
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        function selectAnswer(button, isCorrect) {
+            if (answered) return;
+            
+            answered = true;
+            
+            if (isCorrect) {
+                button.classList.add('correct');
+                score++;
+            } else {
+                button.classList.add('wrong');
+                // Show correct answer
+                const options = document.querySelectorAll('.quiz-option');
+                options[quizData[currentQuestion].correct].classList.add('correct');
+            }
+            
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < quizData.length) {
+                    loadQuestion();
+                } else {
+                    showResult();
+                }
+            }, 2000);
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const questionData = quizData[currentQuestion];
+            const questionElement = document.getElementById('quizQuestion');
+            
+            questionElement.innerHTML = `
+                <h3>Pertanyaan ${currentQuestion + 1} dari ${quizData.length}</h3>
+                <p>${questionData.question}</p>
+                <div class="quiz-options">
+                    ${questionData.options.map((option, index) => 
+                        `<button class="quiz-option" onclick="selectAnswer(this, ${index === questionData.correct})">${option}</button>`
+                    ).join('')}
+                </div>
+            `;
+        }
+
+        function showResult() {
+            document.getElementById('quizQuestion').style.display = 'none';
+            document.getElementById('quizResult').style.display = 'block';
+            document.getElementById('quizScore').textContent = score;
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('quizQuestion').style.display = 'block';
+            document.getElementById('quizResult').style.display = 'none';
+            loadQuestion();
+        }
+
+        // Download functions
+        function downloadSanctions() {
+            RELONS.showAlert('Daftar sanksi sedang diunduh...', 'success');
+            
+            const link = document.createElement('a');
+            link.href = 'data:text/plain;charset=utf-8,DAFTAR SANKSI BULLYING UMN\n\n1. Teguran Lisan\n2. Teguran Tertulis\n3. Skorsing 1-7 hari\n4. Skorsing 1-4 minggu\n5. Dikeluarkan dari UMN\n\nSanksi disesuaikan dengan tingkat keparahan kasus.';
+            link.download = 'Daftar_Sanksi_Bullying_UMN.txt';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadQuestion();
+        });
+    </script>
+
+    <style>
+        .main-content {
+            padding: 120px 0 80px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .downloads-section {
+            margin-bottom: 4rem;
+        }
+
+        .downloads-section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .download-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .download-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+        }
+
+        .education-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-card {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .content-text h4 {
+            color: var(--primary-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .content-text ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .content-text li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .content-text li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .content-media img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .type-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .type-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .type-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .examples {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .examples ul {
+            margin-top: 0.5rem;
+        }
+
+        .impact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .impact-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .impact-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prevention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .prevention-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .prevention-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-card h3 {
+            margin-top: 1rem;
+            color: var(--text-dark);
+        }
+
+        .quiz-container {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .quiz-option {
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            background: var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: left;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-color);
+            background: var(--bg-light);
+        }
+
+        .quiz-option.correct {
+            background: var(--success-color);
+            color: var(--white);
+            border-color: var(--success-color);
+        }
+
+        .quiz-option.wrong {
+            background: var(--accent-color);
+            color: var(--white);
+            border-color: var(--accent-color);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .play-button:hover {
+            background: var(--primary-color);
+        }
+
+        .video-card h3,
+        .video-card p {
+            padding: 0 1.5rem;
+        }
+
+        .video-card h3 {
+            margin: 1rem 0 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .video-card p {
+            color: var(--text-light);
+            padding-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .types-grid,
+            .impact-container,
+            .prevention-grid,
+            .action-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>

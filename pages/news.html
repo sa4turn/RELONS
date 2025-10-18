@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita & Update - RELONS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="../RELONS.png" alt="RELONS Logo" class="logo">
+                    <h1>RELONS</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="education.html" class="nav-link">Edukasi</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="report.html" class="nav-link report-btn">Laporkan</a></li>
+                    <li><a href="tracking.html" class="nav-link">Tracking</a></li>
+                    <li><a href="news.html" class="nav-link">Berita</a></li>
+                    <li><a href="contact.html" class="nav-link">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1><i class="fas fa-newspaper"></i> Berita & Update</h1>
+                <p>Ikuti perkembangan terbaru tentang program anti-bullying di UMN dan berita terkait pencegahan bullying.</p>
+            </div>
+
+            <!-- Featured News -->
+            <div class="featured-news">
+                <div class="featured-card">
+                    <div class="featured-image">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Featured News">
+                        <div class="featured-badge">TERBARU</div>
+                    </div>
+                    <div class="featured-content">
+                        <div class="news-meta">
+                            <span class="news-category">Pengumuman</span>
+                            <span class="news-date">15 Januari 2024</span>
+                        </div>
+                        <h2>UMN Luncurkan Program "Zero Tolerance" Anti-Bullying 2024</h2>
+                        <p>Universitas Multimedia Nusantara mengumumkan kebijakan baru dengan pendekatan zero tolerance terhadap segala bentuk bullying di lingkungan kampus. Program ini dilengkapi dengan sistem pelaporan RELONS yang telah diperbarui.</p>
+                        <button class="btn btn-primary" onclick="readFullArticle(1)">
+                            <i class="fas fa-book-open"></i> Baca Selengkapnya
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Filter -->
+            <div class="news-filter">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">Semua</button>
+                    <button class="filter-btn" data-category="pengumuman">Pengumuman</button>
+                    <button class="filter-btn" data-category="success-story">Success Story</button>
+                    <button class="filter-btn" data-category="kebijakan">Kebijakan</button>
+                    <button class="filter-btn" data-category="penelitian">Penelitian</button>
+                    <button class="filter-btn" data-category="workshop">Workshop</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="searchNews" placeholder="Cari berita...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <!-- News Grid -->
+            <div class="news-grid" id="newsGrid">
+                <!-- News items will be loaded here -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-section">
+                <button class="btn btn-secondary" id="loadMoreBtn" onclick="loadMoreNews()">
+                    <i class="fas fa-plus"></i> Muat Lebih Banyak
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RELONS</h3>
+                    <p>Sistem pelaporan bullying yang aman dan terpercaya untuk komunitas UMN.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak Darurat</h4>
+                    <p><i class="fas fa-phone"></i> +62 21 5422 0808</p>
+                    <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="64171114140b16102411090a4a05074a0d00">[email&#160;protected]</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RELONS - Universitas Multimedia Nusantara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../script.js"></script>
+    <script>
+        // News data
+        const newsData = [
+            {
+                id: 1,
+                title: "Kampanye Anti-Bullying UMN Raih Penghargaan Nasional",
+                category: "pengumuman",
+                excerpt: "Program anti-bullying UMN mendapat pengakuan dari Kemendikbud sebagai best practice pencegahan bullying di perguruan tinggi.",
+                content: "Universitas Multimedia Nusantara (UMN) meraih penghargaan dari Kementerian Pendidikan dan Kebudayaan atas inovasi program anti-bullying yang telah diimplementasikan sejak tahun 2023. Program RELONS (Reporting System for Online Safety) yang menjadi flagship dari kampanye ini dinilai berhasil menurunkan tingkat bullying di kampus hingga 70%.",
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                date: "2024-01-12",
+                author: "Tim Komunikasi RELONS",
+                readTime: "3 min"
+            },
+            {
+                id: 2,
+                title: "Mahasiswa UMN Berbagi Kisah Sukses Melawan Cyberbullying",
+                category: "success-story",
+                excerpt: "Sarah (nama samaran), mahasiswa semester 6, berhasil bangkit dari trauma cyberbullying dengan bantuan program konseling UMN.",
+                content: "Dalam sebuah testimoni yang mengharukan, Sarah menceritakan perjalanannya melawan cyberbullying yang dialami selama hampir satu tahun. Dengan dukungan dari Student Support UMN dan platform RELONS, ia berhasil mendapatkan bantuan yang tepat dan kini menjadi volunteer untuk membantu mahasiswa lain yang mengalami hal serupa.",
+                image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                date: "2024-01-10",
+                author: "Redaksi UMN",
+                readTime: "5 min"
+            },
+            {
+                id: 3,
+                title: "Kebijakan Baru: Sanksi Tegas untuk Pelaku Bullying",
+                category: "kebijakan",
+                excerpt: "UMN memperketat aturan dengan sanksi mulai dari teguran hingga dikeluarkan dari universitas bagi pelaku bullying.",
+                content: "Senat Universitas UMN telah menyetujui kebijakan baru yang memberikan sanksi lebih tegas bagi pelaku bullying. Kebijakan ini mencakup gradasi sanksi mulai dari teguran lisan, teguran tertulis, skorsing, hingga dikeluarkan dari universitas tergantung tingkat keparahan kasus. Kebijakan ini berlaku efektif mulai semester genap 2024.",
+                image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                date: "2024-01-08",
+                author: "Bagian Akademik UMN",
+                readTime: "4 min"
+            },
+            {
+                id: 4,
+                title: "Studi: Dampak Bullying Terhadap Prestasi Akademik Mahasiswa",
+                category: "penelitian",
+                excerpt: "Penelitian terbaru menunjukkan korelasi signifikan antara pengalaman bullying dengan penurunan IPK mahasiswa.",
+                content: "Penelitian yang dilakukan oleh tim psikologi UMN bekerja sama dengan beberapa universitas di Indonesia menunjukkan bahwa mahasiswa yang mengalami bullying memiliki rata-rata IPK 0.5 poin lebih rendah dibanding yang tidak mengalami bullying. Penelitian ini melibatkan 5000 responden dari 20 universitas.",
+                image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                date: "2024-01-05",
+                author: "Tim Peneliti UMN",
+                readTime: "6 min"
+            },
+            {
+                id: 5,
+                title: "Workshop Anti-Bullying Wajib untuk Mahasiswa Baru",
+                category: "workshop",
+                excerpt: "UMN mengadakan workshop wajib tentang pencegahan bullying untuk seluruh mahasiswa baru tahun akademik 2024/2025.",
+                content: "Sebagai bagian dari orientasi mahasiswa baru, UMN mengadakan workshop khusus tentang pencegahan bullying dan penggunaan platform RELONS. Workshop ini dihadiri oleh 2500 mahasiswa baru dan mendapat respons positif. Materi workshop mencakup pengenalan jenis-jenis bullying, cara melaporkan, dan membangun budaya saling mendukung.",
+                image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                date: "2024-01-03",
+                author: "Kemahasiswaan UMN",
+                readTime: "3 min"
+            },
+            {
+                id: 6,
+                title: "Kolaborasi UMN dengan Psikolog untuk Program Konseling",
+                category: "pengumuman",
+                excerpt: "UMN bermitra dengan 15 psikolog profesional untuk memberikan layanan konseling gratis bagi korban bullying.",
+                content: "Dalam upaya memberikan dukungan maksimal bagi mahasiswa yang mengalami bullying, UMN menjalin kemitraan dengan 15 psikolog profesional. Layanan konseling ini tersedia gratis dan dapat diakses melalui platform RELONS. Hingga saat ini, sudah 200+ mahasiswa yang mendapat manfaat dari program ini.",
+                image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+                date: "2024-01-01",
+                author: "Student Support UMN",
+                readTime: "4 min"
+            }
+        ];
+
+        let currentFilter = 'all';
+        let currentPage = 1;
+        const itemsPerPage = 6;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeNews();
+        });
+
+        function initializeNews() {
+            // Initialize filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setActiveFilter(this.dataset.category);
+                });
+            });
+
+            // Initialize search
+            document.getElementById('searchNews').addEventListener('input', handleSearch);
+
+            // Load initial news
+            loadNews();
+        }
+
+        function setActiveFilter(category) {
+            currentFilter = category;
+            currentPage = 1;
+
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-category="${category}"]`).classList.add('active');
+
+            loadNews();
+        }
+
+        function handleSearch() {
+            currentPage = 1;
+            loadNews();
+        }
+
+        function loadNews() {
+            const searchTerm = document.getElementById('searchNews').value.toLowerCase();
+
+            // Filter news
+            let filteredNews = newsData.filter(news => {
+                const matchesCategory = currentFilter === 'all' || news.category === currentFilter;
+                const matchesSearch = !searchTerm || 
+                    news.title.toLowerCase().includes(searchTerm) ||
+                    news.excerpt.toLowerCase().includes(searchTerm);
+
+                return matchesCategory && matchesSearch;
+            });
+
+            // Sort by date (newest first)
+            filteredNews.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            // Paginate
+            const startIndex = 0;
+            const endIndex = currentPage * itemsPerPage;
+            const newsToShow = filteredNews.slice(startIndex, endIndex);
+
+            // Render news
+            renderNews(newsToShow);
+
+            // Show/hide load more button
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            if (endIndex >= filteredNews.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+            }
+        }
+
+        function renderNews(news) {
+            const container = document.getElementById('newsGrid');
+
+            if (news.length === 0) {
+                container.innerHTML = `
+                    <div class="no-news">
+                        <i class="fas fa-newspaper"></i>
+                        <h3>Tidak Ada Berita</h3>
+                        <p>Tidak ada berita yang sesuai dengan pencarian Anda.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = news.map(item => `
+                <div class="news-card" data-category="${item.category}">
+                    <div class="news-image">
+                        <img src="${item.image}" alt="${item.title}">
+                        <div class="news-category-badge">${getCategoryName(item.category)}</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span class="news-date">
+                                <i class="fas fa-calendar"></i>
+                                ${formatDate(item.date)}
+                            </span>
+                            <span class="news-read-time">
+                                <i class="fas fa-clock"></i>
+                                ${item.readTime}
+                            </span>
+                        </div>
+                        <h3>${item.title}</h3>
+                        <p>${item.excerpt}</p>
+                        <div class="news-footer">
+                            <span class="news-author">
+                                <i class="fas fa-user"></i>
+                                ${item.author}
+                            </span>
+                            <button class="btn btn-primary btn-sm" onclick="readFullArticle(${item.id})">
+                                <i class="fas fa-book-open"></i> Baca
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getCategoryName(category) {
+            const categories = {
+                pengumuman: 'Pengumuman',
+                'success-story': 'Success Story',
+                kebijakan: 'Kebijakan',
+                penelitian: 'Penelitian',
+                workshop: 'Workshop'
+            };
+            return categories[category] || category;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('id-ID', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        function loadMoreNews() {
+            currentPage++;
+            loadNews();
+        }
+
+        function readFullArticle(newsId) {
+            const news = newsData.find(n => n.id === newsId);
+            if (news) {
+                // In a real app, this would navigate to a detailed article page
+                RELONS.showAlert(`Membaca artikel: "${news.title}"\n\n${news.content}`, 'info');
+            }
+        }
+    </script>
+
+    <style>
+        .main-content {
+            padding: 120px 0 80px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .featured-news {
+            margin-bottom: 3rem;
+        }
+
+        .featured-card {
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 400px;
+        }
+
+        .featured-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .featured-card:hover .featured-image img {
+            transform: scale(1.05);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .featured-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-content h2 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .featured-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .news-filter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e5e7eb;
+            background: var(--white);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .search-box {
+            position: relative;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 3rem 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-category-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .news-content h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+
+        .news-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .news-author {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .no-news {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+        }
+
+        .no-news i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .load-more-section {
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .featured-card {
+                grid-template-columns: 1fr;
+            }
+
+            .news-filter {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+            }
+
+            .search-box {
+                min-width: auto;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+        }
+    </style>
+</body>
+</html>

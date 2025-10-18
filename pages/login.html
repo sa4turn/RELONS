@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://public-frontend-cos.metadl.com/mgx/img/favicon.png" type="image/png">
+    <title>Login - RELONS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 20px;
+        }
+        
+        .auth-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+        
+        .auth-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .auth-logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .auth-logo h1 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin: 0;
+        }
+        
+        .auth-title {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+        
+        .auth-form {
+            text-align: left;
+        }
+        
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+        
+        .form-group input {
+            padding-left: 45px;
+            height: 50px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .auth-btn {
+            width: 100%;
+            height: 50px;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+        
+        .auth-btn:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+        }
+        
+        .auth-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .auth-btn.guest {
+            background: var(--warning-color);
+        }
+        
+        .auth-btn.guest:hover {
+            background: #d97706;
+        }
+        
+        .auth-links {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .auth-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .divider {
+            margin: 1.5rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e5e7eb;
+        }
+        
+        .divider span {
+            background: var(--white);
+            padding: 0 1rem;
+            color: var(--text-light);
+        }
+        
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+        
+        .back-home:hover {
+            color: #e5e7eb;
+        }
+        
+        .student-info {
+            background: #eff6ff;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        
+        .student-info i {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+        
+        .nim-field {
+            display: none;
+        }
+        
+        .nim-field.show {
+            display: block;
+        }
+        
+        .guest-info {
+            background: #fefce8;
+            border: 2px solid var(--warning-color);
+            color: #92400e;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .guest-form {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .guest-form.show {
+            display: block;
+        }
+
+        .guest-form .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .guest-form input, .guest-form select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+
+        .guest-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-home">
+        <i class="fas fa-arrow-left"></i>
+        Kembali ke Beranda
+    </a>
+    
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <img src="../RELONS.png" alt="RELONS Logo">
+                <h1>RELONS</h1>
+            </div>
+            
+            <h2 class="auth-title">Masuk ke RELONS</h2>
+            
+            <div class="student-info">
+                <i class="fas fa-graduation-cap"></i>
+                <strong>Mahasiswa UMN:</strong> Gunakan email @student.umn.ac.id dan masukkan NIM untuk login otomatis.
+            </div>
+            
+            <form class="auth-form" id="loginForm">
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                
+                <div class="form-group nim-field" id="nimField">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" id="nim" name="nim" placeholder="NIM (Nomor Induk Mahasiswa - minimal 9 angka)">
+                </div>
+                
+                <div class="form-group password-field" id="passwordField">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>
+                
+                <button type="submit" class="auth-btn" id="loginBtn">
+                    Masuk
+                </button>
+                
+                <button type="button" class="auth-btn guest" id="guestBtn">
+                    <i class="fas fa-user-secret"></i> Masuk sebagai Guest
+                </button>
+            </form>
+
+            <!-- Guest Form -->
+            <div class="guest-form" id="guestForm">
+                <div class="guest-info">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Mode Guest:</strong> Anda dapat melaporkan secara anonim, tetapi harus mengisi data diri untuk keperluan verifikasi dan tindak lanjut.
+                </div>
+                
+                <form id="guestDataForm">
+                    <div class="form-group">
+                        <label for="guestName">Nama Lengkap *</label>
+                        <input type="text" id="guestName" name="guestName" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guestEmail">Email *</label>
+                        <input type="email" id="guestEmail" name="guestEmail" placeholder="Masukkan email Anda" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guestPhone">Nomor Telepon *</label>
+                        <input type="tel" id="guestPhone" name="guestPhone" placeholder="Masukkan nomor telepon Anda" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guestRole">Status *</label>
+                        <select id="guestRole" name="guestRole" required>
+                            <option value="">Pilih Status Anda</option>
+                            <option value="mahasiswa_non_umn">Mahasiswa Non-UMN</option>
+                            <option value="dosen">Dosen/Staff</option>
+                            <option value="orang_tua">Orang Tua/Wali</option>
+                            <option value="masyarakat">Masyarakat Umum</option>
+                            <option value="alumni">Alumni UMN</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guestInstitution">Institusi/Asal (Opsional)</label>
+                        <input type="text" id="guestInstitution" name="guestInstitution" placeholder="Nama institusi atau asal Anda">
+                    </div>
+                    
+                    <button type="submit" class="auth-btn guest">
+                        <i class="fas fa-user-check"></i> Lanjutkan sebagai Guest
+                    </button>
+                    
+                    <button type="button" class="auth-btn" id="backToLogin">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Login
+                    </button>
+                </form>
+            </div>
+            
+            <div class="divider" id="dividerSection">
+                <span>atau</span>
+            </div>
+            
+            <div class="auth-links" id="authLinksSection">
+                <p>Non-mahasiswa? <a href="register.html">Daftar akun baru</a></p>
+                <p><a href="forgot-password.html">Lupa password?</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is already logged in
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                window.location.href = '../index.html';
+                return;
+            }
+            
+            const loginForm = document.getElementById('loginForm');
+            const guestForm = document.getElementById('guestForm');
+            const guestDataForm = document.getElementById('guestDataForm');
+            const loginBtn = document.getElementById('loginBtn');
+            const guestBtn = document.getElementById('guestBtn');
+            const backToLoginBtn = document.getElementById('backToLogin');
+            const emailInput = document.getElementById('email');
+            const nimField = document.getElementById('nimField');
+            const passwordField = document.getElementById('passwordField');
+            const dividerSection = document.getElementById('dividerSection');
+            const authLinksSection = document.getElementById('authLinksSection');
+            
+            // Check email domain and show appropriate fields
+            emailInput.addEventListener('input', function() {
+                const email = this.value.toLowerCase();
+                
+                if (email.endsWith('@student.umn.ac.id')) {
+                    // Show NIM field, hide password field
+                    nimField.classList.add('show');
+                    passwordField.style.display = 'none';
+                    document.getElementById('password').required = false;
+                    document.getElementById('nim').required = true;
+                    loginBtn.textContent = 'Login Mahasiswa UMN';
+                } else {
+                    // Show password field, hide NIM field
+                    nimField.classList.remove('show');
+                    passwordField.style.display = 'block';
+                    document.getElementById('password').required = true;
+                    document.getElementById('nim').required = false;
+                    loginBtn.textContent = 'Masuk';
+                }
+            });
+            
+            // Guest login button - show guest form
+            guestBtn.addEventListener('click', function() {
+                loginForm.style.display = 'none';
+                guestForm.classList.add('show');
+                dividerSection.style.display = 'none';
+                authLinksSection.style.display = 'none';
+            });
+
+            // Back to login button
+            backToLoginBtn.addEventListener('click', function() {
+                loginForm.style.display = 'block';
+                guestForm.classList.remove('show');
+                dividerSection.style.display = 'block';
+                authLinksSection.style.display = 'block';
+            });
+
+            // Guest data form submission
+            guestDataForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const guestData = {
+                    name: document.getElementById('guestName').value,
+                    email: document.getElementById('guestEmail').value,
+                    phone: document.getElementById('guestPhone').value,
+                    role: document.getElementById('guestRole').value,
+                    institution: document.getElementById('guestInstitution').value
+                };
+
+                // Validate required fields
+                if (!guestData.name || !guestData.email || !guestData.phone || !guestData.role) {
+                    RELONS.showAlert('Mohon lengkapi semua field yang wajib diisi!', 'error');
+                    return;
+                }
+
+                // Create guest session with personal data
+                loginAsGuest(guestData);
+            });
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const nim = document.getElementById('nim').value;
+                
+                // Show loading state
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Masuk...';
+                
+                // Simulate API call delay
+                setTimeout(() => {
+                    if (email.toLowerCase().endsWith('@student.umn.ac.id')) {
+                        // Student login with NIM
+                        if (loginStudent(email, nim)) {
+                            RELONS.showAlert('Login mahasiswa berhasil! Selamat datang.', 'success');
+                            setTimeout(() => {
+                                window.location.href = '../index.html';
+                            }, 1500);
+                        } else {
+                            RELONS.showAlert('Email atau NIM tidak valid! NIM harus minimal 9 angka.', 'error');
+                            loginBtn.disabled = false;
+                            loginBtn.innerHTML = 'Login Mahasiswa UMN';
+                        }
+                    } else {
+                        // Regular user login
+                        if (loginUser(email, password)) {
+                            RELONS.showAlert('Login berhasil! Selamat datang kembali.', 'success');
+                            setTimeout(() => {
+                                window.location.href = '../index.html';
+                            }, 1500);
+                        } else {
+                            RELONS.showAlert('Email atau password salah!', 'error');
+                            loginBtn.disabled = false;
+                            loginBtn.innerHTML = 'Masuk';
+                        }
+                    }
+                }, 1000);
+            });
+        });
+        
+        function loginStudent(email, nim) {
+            // Validate email format
+            if (!email.toLowerCase().endsWith('@student.umn.ac.id')) {
+                return false;
+            }
+            
+            // Validate NIM format (should be numbers, minimum 9 digits)
+            if (!nim || !/^\d{9,}$/.test(nim)) {
+                return false;
+            }
+            
+            // Extract name from email (before @)
+            const name = email.split('@')[0].replace(/\./g, ' ').replace(/\d+/g, '').trim();
+            const formattedName = name.split(' ').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            ).join(' ');
+            
+            // Create or get student account
+            const users = JSON.parse(localStorage.getItem('relons_users') || '[]');
+            let student = users.find(u => u.email === email);
+            
+            if (!student) {
+                // Create new student account
+                student = {
+                    id: 'student_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                    name: formattedName || 'Mahasiswa UMN',
+                    email: email,
+                    phone: '-',
+                    role: 'student',
+                    studentId: nim,
+                    password: 'student_auto_' + nim, // Auto-generated password
+                    createdAt: new Date().toISOString(),
+                    isActive: true,
+                    isAutoCreated: true
+                };
+                
+                users.push(student);
+                localStorage.setItem('relons_users', JSON.stringify(users));
+            } else {
+                // Update NIM if different
+                student.studentId = nim;
+                localStorage.setItem('relons_users', JSON.stringify(users));
+            }
+            
+            // Set current user
+            localStorage.setItem('currentUser', JSON.stringify({
+                id: student.id,
+                name: student.name,
+                email: student.email,
+                role: student.role,
+                studentId: nim,
+                loginTime: new Date().toISOString()
+            }));
+            
+            return true;
+        }
+        
+        function loginUser(email, password) {
+            const users = JSON.parse(localStorage.getItem('relons_users') || '[]');
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Set current user
+                localStorage.setItem('currentUser', JSON.stringify({
+                    id: user.id,
+                    name: user.name,
+                    email: user.email,
+                    role: user.role,
+                    loginTime: new Date().toISOString()
+                }));
+                return true;
+            }
+            return false;
+        }
+        
+        function loginAsGuest(guestData) {
+            // Create guest session with personal data
+            const guestUser = {
+                id: 'guest_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                name: guestData.name,
+                email: guestData.email,
+                phone: guestData.phone,
+                role: 'guest',
+                guestRole: guestData.role,
+                institution: guestData.institution,
+                loginTime: new Date().toISOString(),
+                isGuest: true,
+                hasPersonalData: true
+            };
+            
+            localStorage.setItem('currentUser', JSON.stringify(guestUser));
+            
+            RELONS.showAlert('Masuk sebagai guest berhasil! Data Anda telah tersimpan untuk keperluan laporan.', 'success');
+            setTimeout(() => {
+                window.location.href = '../index.html';
+            }, 1500);
+        }
+    </script>
+</body>
+</html>

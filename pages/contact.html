@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Student Support - RELONS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="../RELONS.png" alt="RELONS Logo">
+                    <h1>RELONS</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="education.html" class="nav-link">Edukasi</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="report.html" class="nav-link report-btn">Laporkan</a></li>
+                    <li><a href="tracking.html" class="nav-link">Tracking</a></li>
+                    <li><a href="news.html" class="nav-link">Berita</a></li>
+                    <li><a href="contact.html" class="nav-link">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1><i class="fas fa-headset"></i> Kontak Student Support</h1>
+                <p>Hubungi tim Student Support UMN untuk bantuan, konseling, atau informasi lebih lanjut tentang RELONS.</p>
+            </div>
+
+            <!-- Contact Methods -->
+            <div class="contact-methods">
+                <div class="method-card emergency">
+                    <div class="method-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Darurat 24/7</h3>
+                    <p>Untuk situasi darurat yang memerlukan bantuan segera</p>
+                    <div class="contact-info">
+                        <a href="tel:+622154220808" class="contact-btn emergency-btn">
+                            <i class="fas fa-phone"></i>
+                            +62 21 5422 0808
+                        </a>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Chat langsung dengan konselor Student Support</p>
+                    <div class="contact-info">
+                        <button class="contact-btn" onclick="startLiveChat()">
+                            <i class="fas fa-comment-dots"></i>
+                            Mulai Chat
+                        </button>
+                        <span class="availability online">Online</span>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Video Call</h3>
+                    <p>Konsultasi tatap muka melalui video call</p>
+                    <div class="contact-info">
+                        <button class="contact-btn" onclick="scheduleVideoCall()">
+                            <i class="fas fa-calendar-plus"></i>
+                            Jadwalkan
+                        </button>
+                        <span class="availability">Buat Janji</span>
+                    </div>
+                </div>
+
+                <div class="method-card">
+                    <div class="method-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>Kirim email untuk pertanyaan non-darurat</p>
+                    <div class="contact-info">
+                        <a href="/cdn-cgi/l/email-protection#ff8c8a8f8f908d8bbf8a9291d19e9cd1969b" class="contact-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span class="__cf_email__" data-cfemail="9ae9efeaeaf5e8eedaeff7f4b4fbf9b4f3fe">[email&#160;protected]</span>
+                        </a>
+                        <span class="availability">Respon 24 jam</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Contact Form -->
+            <div class="quick-contact-section">
+                <div class="contact-form-container">
+                    <div class="form-header">
+                        <h2><i class="fas fa-paper-plane"></i> Kirim Pesan Cepat</h2>
+                        <p>Isi formulir di bawah ini untuk menghubungi tim Student Support</p>
+                    </div>
+                    
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="contactName">Nama Lengkap</label>
+                                <input type="text" id="contactName" name="contactName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactEmail">Email</label>
+                                <input type="email" id="contactEmail" name="contactEmail" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactSubject">Subjek</label>
+                            <select id="contactSubject" name="contactSubject" required>
+                                <option value="">Pilih Subjek</option>
+                                <option value="report_inquiry">Pertanyaan tentang Laporan</option>
+                                <option value="counseling">Permintaan Konseling</option>
+                                <option value="technical">Bantuan Teknis RELONS</option>
+                                <option value="general">Pertanyaan Umum</option>
+                                <option value="feedback">Feedback & Saran</option>
+                                <option value="other">Lainnya</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reportId">ID Laporan (jika ada)</label>
+                            <input type="text" id="reportId" name="reportId" placeholder="Masukkan ID laporan jika pertanyaan terkait laporan tertentu">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactMessage">Pesan</label>
+                            <textarea id="contactMessage" name="contactMessage" rows="6" placeholder="Jelaskan pertanyaan atau kebutuhan Anda..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="urgencyLevel">Tingkat Urgensi</label>
+                            <div class="urgency-options">
+                                <label class="radio-option">
+                                    <input type="radio" name="urgencyLevel" value="low" required>
+                                    <span class="radio-custom"></span>
+                                    <div class="urgency-content">
+                                        <strong>Rendah</strong>
+                                        <p>Pertanyaan umum, respon 1-2 hari</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="urgencyLevel" value="medium" required>
+                                    <span class="radio-custom"></span>
+                                    <div class="urgency-content">
+                                        <strong>Sedang</strong>
+                                        <p>Perlu bantuan, respon dalam 24 jam</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="urgencyLevel" value="high" required>
+                                    <span class="radio-custom"></span>
+                                    <div class="urgency-content">
+                                        <strong>Tinggi</strong>
+                                        <p>Mendesak, respon dalam 4 jam</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="clearContactForm()">
+                                <i class="fas fa-times"></i> Batal
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> Kirim Pesan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Contact Info Sidebar -->
+                <div class="contact-info-sidebar">
+                    <div class="info-card">
+                        <h3><i class="fas fa-clock"></i> Jam Operasional</h3>
+                        <div class="schedule">
+                            <div class="schedule-item">
+                                <span>Senin - Jumat</span>
+                                <span>08:00 - 17:00</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span>Sabtu</span>
+                                <span>08:00 - 12:00</span>
+                            </div>
+                            <div class="schedule-item">
+                                <span>Minggu</span>
+                                <span>Darurat Only</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Lokasi</h3>
+                        <div class="location-info">
+                            <p><strong>Student Support Center</strong></p>
+                            <p>Gedung Utama Lantai 2</p>
+                            <p>Universitas Multimedia Nusantara</p>
+                            <p>Jl. Scientia Boulevard, Gading Serpong</p>
+                            <p>Tangerang, Banten 15811</p>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" onclick="openMaps()">
+                            <i class="fas fa-directions"></i> Petunjuk Arah
+                        </button>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-users"></i> Tim Support</h3>
+                        <div class="team-info">
+                            <div class="team-member">
+                                <div class="member-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Dr. Sarah Wijaya</h4>
+                                    <p>Koordinator Student Support</p>
+                                    <span class="status online">Online</span>
+                                </div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Psikolog Ahmad Fauzi</h4>
+                                    <p>Konselor Senior</p>
+                                    <span class="status away">Away</span>
+                                </div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Maria Gonzales</h4>
+                                    <p>Support Specialist</p>
+                                    <span class="status online">Online</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3><i class="fas fa-question-circle"></i> FAQ</h3>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <button class="faq-question" onclick="toggleFAQ(this)">
+                                    Bagaimana cara melaporkan bullying?
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Anda dapat melaporkan melalui halaman "Laporkan" di website RELONS atau langsung menghubungi Student Support.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question" onclick="toggleFAQ(this)">
+                                    Apakah laporan saya akan dirahasiakan?
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Ya, semua laporan akan dijaga kerahasiaannya sesuai dengan kebijakan privasi UMN.</p>
+                                </div>
+                            </div>
+                            <div class="faq-item">
+                                <button class="faq-question" onclick="toggleFAQ(this)">
+                                    Berapa lama proses penanganan laporan?
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Proses penanganan biasanya 3-7 hari kerja, tergantung kompleksitas kasus.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Video Call Modal -->
+    <div id="videoCallModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-video"></i> Jadwalkan Video Call</h2>
+            <form id="videoCallForm">
+                <div class="form-group">
+                    <label for="callDate">Tanggal</label>
+                    <input type="date" id="callDate" name="callDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="callTime">Waktu</label>
+                    <select id="callTime" name="callTime" required>
+                        <option value="">Pilih Waktu</option>
+                        <option value="09:00">09:00 - 09:30</option>
+                        <option value="10:00">10:00 - 10:30</option>
+                        <option value="11:00">11:00 - 11:30</option>
+                        <option value="13:00">13:00 - 13:30</option>
+                        <option value="14:00">14:00 - 14:30</option>
+                        <option value="15:00">15:00 - 15:30</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="callReason">Tujuan Konsultasi</label>
+                    <textarea id="callReason" name="callReason" rows="3" placeholder="Jelaskan singkat tujuan video call..." required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('videoCallModal')">Batal</button>
+                    <button type="submit" class="btn btn-primary">Jadwalkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RELONS</h3>
+                    <p>Sistem pelaporan bullying yang aman dan terpercaya untuk komunitas UMN.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak Darurat</h4>
+                    <p><i class="fas fa-phone"></i> +62 21 5422 0808</p>
+                    <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3d0d6d3d3ccd1d7e3d6cecd8dc2c08dcac7">[email&#160;protected]</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RELONS - Universitas Multimedia Nusantara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeContact();
+            
+            // Check if there's a report ID in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const reportId = urlParams.get('report');
+            if (reportId) {
+                document.getElementById('reportId').value = reportId;
+                document.getElementById('contactSubject').value = 'report_inquiry';
+            }
+        });
+
+        function initializeContact() {
+            // Initialize contact form
+            document.getElementById('contactForm').addEventListener('submit', handleContactSubmit);
+            document.getElementById('videoCallForm').addEventListener('submit', handleVideoCallSubmit);
+            
+            // Initialize modal close buttons
+            document.querySelectorAll('.close').forEach(closeBtn => {
+                closeBtn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+        }
+
+        function startLiveChat() {
+            RELONS.showAlert('Menghubungkan Anda dengan konselor...', 'info');
+            
+            // Simulate connecting to live chat
+            setTimeout(() => {
+                // Open chat widget from main page
+                if (window.toggleChat) {
+                    window.toggleChat();
+                } else {
+                    // Fallback: show success message
+                    RELONS.showAlert('Chat dimulai! Konselor akan segera merespons.', 'success');
+                }
+            }, 2000);
+        }
+
+        function scheduleVideoCall() {
+            document.getElementById('videoCallModal').style.display = 'block';
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('callDate').min = today;
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const contactData = Object.fromEntries(formData.entries());
+            
+            // Validate form
+            if (!contactData.contactName || !contactData.contactEmail || !contactData.contactSubject || !contactData.contactMessage || !contactData.urgencyLevel) {
+                RELONS.showAlert('Mohon lengkapi semua field yang wajib diisi', 'error');
+                return;
+            }
+            
+            // Create contact message object
+            const message = {
+                id: RELONS.generateId(),
+                ...contactData,
+                timestamp: new Date().toISOString(),
+                status: 'sent'
+            };
+            
+            // Save to localStorage
+            RELONS.saveToLocalStorage('contactMessages', message);
+            
+            // Clear form
+            e.target.reset();
+            
+            // Show success message based on urgency
+            let responseTime = '';
+            switch (contactData.urgencyLevel) {
+                case 'high':
+                    responseTime = '4 jam';
+                    break;
+                case 'medium':
+                    responseTime = '24 jam';
+                    break;
+                default:
+                    responseTime = '1-2 hari';
+            }
+            
+            RELONS.showAlert(`Pesan berhasil dikirim! Tim Student Support akan merespons dalam ${responseTime}.`, 'success');
+        }
+
+        function handleVideoCallSubmit(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const callData = Object.fromEntries(formData.entries());
+            
+            // Validate form
+            if (!callData.callDate || !callData.callTime || !callData.callReason) {
+                RELONS.showAlert('Mohon lengkapi semua field', 'error');
+                return;
+            }
+            
+            // Create appointment object
+            const appointment = {
+                id: RELONS.generateId(),
+                ...callData,
+                timestamp: new Date().toISOString(),
+                status: 'scheduled'
+            };
+            
+            // Save to localStorage
+            RELONS.saveToLocalStorage('videoCallAppointments', appointment);
+            
+            // Close modal and clear form
+            RELONS.closeModal('videoCallModal');
+            e.target.reset();
+            
+            RELONS.showAlert('Video call berhasil dijadwalkan! Anda akan menerima link meeting melalui email.', 'success');
+        }
+
+        function clearContactForm() {
+            document.getElementById('contactForm').reset();
+        }
+
+        function openMaps() {
+            const address = "Universitas Multimedia Nusantara, Jl. Scientia Boulevard, Gading Serpong, Tangerang";
+            const encodedAddress = encodeURIComponent(address);
+            window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
+        }
+
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = element.querySelector('i');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-answer').style.display = 'none';
+                    item.querySelector('i').style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ
+            if (faqItem.classList.contains('active')) {
+                faqItem.classList.remove('active');
+                answer.style.display = 'none';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                faqItem.classList.add('active');
+                answer.style.display = 'block';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+
+    <style>
+        .main-content {
+            padding: 120px 0 80px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .method-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .method-card.emergency {
+            border-color: var(--accent-color);
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+        }
+
+        .method-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .method-card.emergency .method-icon {
+            background: linear-gradient(135deg, var(--accent-color), #dc2626);
+        }
+
+        .method-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .method-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-btn:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+        }
+
+        .emergency-btn {
+            background: var(--accent-color) !important;
+        }
+
+        .emergency-btn:hover {
+            background: #dc2626 !important;
+        }
+
+        .availability {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .availability.online {
+            color: var(--success-color);
+            font-weight: 600;
+        }
+
+        .quick-contact-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .contact-form-container {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-header h2 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .urgency-options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .radio-option:hover {
+            border-color: var(--primary-color);
+            background-color: var(--bg-light);
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom::after {
+            display: block;
+        }
+
+        .radio-custom {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .radio-custom::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .urgency-content strong {
+            display: block;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .urgency-content p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .contact-info-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1rem;
+        }
+
+        .schedule {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .schedule-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+
+        .location-info p {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .team-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .member-avatar {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .member-info h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .member-info p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .status {
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status.online {
+            color: var(--success-color);
+        }
+
+        .status.away {
+            color: var(--warning-color);
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .faq-item {
+            border: 1px solid #e5e7eb;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-light);
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: #e5e7eb;
+        }
+
+        .faq-question i {
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 1rem;
+            background: var(--white);
+            display: none;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .faq-answer p {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-contact-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info-sidebar {
+                order: -1;
+            }
+            
+            .team-member {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</body>
+</html>

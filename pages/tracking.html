@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking Laporan - RELONS</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="../RELONS.png" alt="RELONS Logo" class="logo">
+                    <h1>RELONS</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link">Beranda</a></li>
+                    <li><a href="education.html" class="nav-link">Edukasi</a></li>
+                    <li><a href="forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="report.html" class="nav-link report-btn">Laporkan</a></li>
+                    <li><a href="tracking.html" class="nav-link">Tracking</a></li>
+                    <li><a href="news.html" class="nav-link">Berita</a></li>
+                    <li><a href="contact.html" class="nav-link">Kontak</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1><i class="fas fa-search"></i> Tracking Laporan</h1>
+                <p>Pantau status dan perkembangan laporan bullying yang telah Anda buat</p>
+            </div>
+
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-card">
+                    <h3><i class="fas fa-magnifying-glass"></i> Cari Laporan Anda</h3>
+                    <div class="search-options">
+                        <div class="search-option">
+                            <input type="radio" id="searchById" name="searchType" value="id" checked>
+                            <label for="searchById">Cari dengan ID Laporan</label>
+                        </div>
+                        <div class="search-option">
+                            <input type="radio" id="searchByEmail" name="searchType" value="email">
+                            <label for="searchByEmail">Cari dengan Email</label>
+                        </div>
+                    </div>
+                    <div class="search-input-group">
+                        <input type="text" id="searchInput" placeholder="Masukkan ID Laporan (contoh: REL-2024-001)">
+                        <button class="btn btn-primary" onclick="searchReport()">
+                            <i class="fas fa-search"></i> Cari
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Reports Section (for logged in users) -->
+            <div class="my-reports-section" id="myReportsSection" style="display: none;">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Laporan Saya</h2>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-status="all">Semua</button>
+                        <button class="filter-btn" data-status="pending">Pending</button>
+                        <button class="filter-btn" data-status="in_progress">Diproses</button>
+                        <button class="filter-btn" data-status="resolved">Selesai</button>
+                    </div>
+                </div>
+                <div class="reports-grid" id="myReportsGrid">
+                    <!-- User reports will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Search Results -->
+            <div class="search-results" id="searchResults" style="display: none;">
+                <!-- Search results will be displayed here -->
+            </div>
+
+            <!-- Report Status Guide -->
+            <div class="status-guide">
+                <h3><i class="fas fa-info-circle"></i> Panduan Status Laporan</h3>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <div class="status-badge pending">
+                            <i class="fas fa-clock"></i>
+                            <span>Pending</span>
+                        </div>
+                        <p>Laporan telah diterima dan menunggu verifikasi awal</p>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-badge in_progress">
+                            <i class="fas fa-cog"></i>
+                            <span>Diproses</span>
+                        </div>
+                        <p>Laporan sedang ditangani oleh tim Student Support</p>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-badge under_investigation">
+                            <i class="fas fa-search"></i>
+                            <span>Investigasi</span>
+                        </div>
+                        <p>Sedang dilakukan investigasi mendalam terhadap kasus</p>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-badge resolved">
+                            <i class="fas fa-check"></i>
+                            <span>Selesai</span>
+                        </div>
+                        <p>Kasus telah diselesaikan dan tindakan telah diambil</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RELONS</h3>
+                    <p>Sistem pelaporan bullying yang aman dan terpercaya untuk komunitas UMN.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak Darurat</h4>
+                    <p><i class="fas fa-phone"></i> +62 21 5422 0808</p>
+                    <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="64171114140b16102411090a4a05074a0d00">[email&#160;protected]</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RELONS - Universitas Multimedia Nusantara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../script.js"></script>
+    <script>
+        let currentUser = null;
+        let userReports = [];
+        let currentFilter = 'all';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is logged in
+            const userData = localStorage.getItem('currentUser');
+            if (userData) {
+                currentUser = JSON.parse(userData);
+                loadUserReports();
+                document.getElementById('myReportsSection').style.display = 'block';
+            }
+
+            // Initialize search type change
+            document.querySelectorAll('input[name="searchType"]').forEach(radio => {
+                radio.addEventListener('change', updateSearchPlaceholder);
+            });
+
+            // Initialize filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setActiveFilter(this.dataset.status);
+                });
+            });
+
+            updateSearchPlaceholder();
+        });
+
+        function updateSearchPlaceholder() {
+            const searchType = document.querySelector('input[name="searchType"]:checked').value;
+            const searchInput = document.getElementById('searchInput');
+            
+            if (searchType === 'id') {
+                searchInput.placeholder = 'Masukkan ID Laporan (contoh: REL-2024-001)';
+            } else {
+                searchInput.placeholder = 'Masukkan email yang digunakan saat melaporkan';
+            }
+        }
+
+        function loadUserReports() {
+            // Load reports from localStorage
+            const allReports = JSON.parse(localStorage.getItem('relons_reports') || '[]');
+            userReports = allReports.filter(report => 
+                report.reporterId === currentUser.id || 
+                (currentUser.email && report.reporterEmail === currentUser.email)
+            );
+            
+            displayUserReports();
+        }
+
+        function setActiveFilter(status) {
+            currentFilter = status;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-status="${status}"]`).classList.add('active');
+            
+            displayUserReports();
+        }
+
+        function displayUserReports() {
+            const container = document.getElementById('myReportsGrid');
+            
+            // Filter reports based on current filter
+            let filteredReports = userReports;
+            if (currentFilter !== 'all') {
+                filteredReports = userReports.filter(report => report.status === currentFilter);
+            }
+            
+            if (filteredReports.length === 0) {
+                container.innerHTML = `
+                    <div class="no-reports">
+                        <i class="fas fa-inbox"></i>
+                        <h3>Tidak Ada Laporan</h3>
+                        <p>${currentFilter === 'all' ? 'Anda belum membuat laporan apapun.' : `Tidak ada laporan dengan status "${getStatusName(currentFilter)}".`}</p>
+                        <a href="report.html" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Buat Laporan Baru
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = filteredReports.map(report => `
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-id">
+                            <i class="fas fa-hashtag"></i>
+                            <span>${report.id}</span>
+                        </div>
+                        <div class="status-badge ${report.status}">
+                            <i class="fas ${getStatusIcon(report.status)}"></i>
+                            <span>${getStatusName(report.status)}</span>
+                        </div>
+                    </div>
+                    <div class="report-content">
+                        <h4>${report.incidentType}</h4>
+                        <p class="report-description">${report.description.substring(0, 100)}${report.description.length > 100 ? '...' : ''}</p>
+                        <div class="report-meta">
+                            <span class="report-date">
+                                <i class="fas fa-calendar"></i>
+                                ${formatDate(report.createdAt)}
+                            </span>
+                            <span class="report-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                ${report.location}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="report-actions">
+                        <button class="btn btn-secondary btn-sm" onclick="viewReportDetail('${report.id}')">
+                            <i class="fas fa-eye"></i> Detail
+                        </button>
+                        ${report.status === 'pending' ? `
+                            <button class="btn btn-warning btn-sm" onclick="editReport('${report.id}')">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function searchReport() {
+            const searchType = document.querySelector('input[name="searchType"]:checked').value;
+            const searchValue = document.getElementById('searchInput').value.trim();
+            
+            if (!searchValue) {
+                RELONS.showAlert('Mohon masukkan kata kunci pencarian!', 'error');
+                return;
+            }
+            
+            const allReports = JSON.parse(localStorage.getItem('relons_reports') || '[]');
+            let foundReports = [];
+            
+            if (searchType === 'id') {
+                foundReports = allReports.filter(report => 
+                    report.id.toLowerCase().includes(searchValue.toLowerCase())
+                );
+            } else {
+                foundReports = allReports.filter(report => 
+                    report.reporterEmail && report.reporterEmail.toLowerCase() === searchValue.toLowerCase()
+                );
+            }
+            
+            displaySearchResults(foundReports, searchValue, searchType);
+        }
+
+        function displaySearchResults(reports, searchValue, searchType) {
+            const container = document.getElementById('searchResults');
+            container.style.display = 'block';
+            
+            if (reports.length === 0) {
+                container.innerHTML = `
+                    <div class="search-result-header">
+                        <h3>Hasil Pencarian</h3>
+                        <p>Pencarian untuk "${searchValue}" (${searchType === 'id' ? 'ID Laporan' : 'Email'})</p>
+                    </div>
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>Tidak Ditemukan</h3>
+                        <p>Tidak ada laporan yang sesuai dengan pencarian Anda.</p>
+                        <div class="search-tips">
+                            <h4>Tips Pencarian:</h4>
+                            <ul>
+                                <li>Pastikan ID laporan atau email yang dimasukkan benar</li>
+                                <li>ID laporan biasanya berformat REL-YYYY-XXX</li>
+                                <li>Gunakan email yang sama dengan saat membuat laporan</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = `
+                <div class="search-result-header">
+                    <h3>Hasil Pencarian</h3>
+                    <p>Ditemukan ${reports.length} laporan untuk "${searchValue}"</p>
+                </div>
+                <div class="reports-grid">
+                    ${reports.map(report => `
+                        <div class="report-card">
+                            <div class="report-header">
+                                <div class="report-id">
+                                    <i class="fas fa-hashtag"></i>
+                                    <span>${report.id}</span>
+                                </div>
+                                <div class="status-badge ${report.status}">
+                                    <i class="fas ${getStatusIcon(report.status)}"></i>
+                                    <span>${getStatusName(report.status)}</span>
+                                </div>
+                            </div>
+                            <div class="report-content">
+                                <h4>${report.incidentType}</h4>
+                                <p class="report-description">${report.description.substring(0, 100)}${report.description.length > 100 ? '...' : ''}</p>
+                                <div class="report-meta">
+                                    <span class="report-date">
+                                        <i class="fas fa-calendar"></i>
+                                        ${formatDate(report.createdAt)}
+                                    </span>
+                                    <span class="report-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        ${report.location}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="report-actions">
+                                <button class="btn btn-secondary btn-sm" onclick="viewReportDetail('${report.id}')">
+                                    <i class="fas fa-eye"></i> Detail
+                                </button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function getStatusName(status) {
+            const statusNames = {
+                pending: 'Pending',
+                in_progress: 'Diproses',
+                under_investigation: 'Investigasi',
+                resolved: 'Selesai',
+                rejected: 'Ditolak'
+            };
+            return statusNames[status] || status;
+        }
+
+        function getStatusIcon(status) {
+            const statusIcons = {
+                pending: 'fa-clock',
+                in_progress: 'fa-cog',
+                under_investigation: 'fa-search',
+                resolved: 'fa-check',
+                rejected: 'fa-times'
+            };
+            return statusIcons[status] || 'fa-question';
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('id-ID', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function viewReportDetail(reportId) {
+            const allReports = JSON.parse(localStorage.getItem('relons_reports') || '[]');
+            const report = allReports.find(r => r.id === reportId);
+            
+            if (!report) {
+                RELONS.showAlert('Laporan tidak ditemukan!', 'error');
+                return;
+            }
+            
+            // Create detailed view modal or redirect to detail page
+            const detailHtml = `
+                <div class="report-detail-modal">
+                    <h3>Detail Laporan ${report.id}</h3>
+                    <div class="detail-content">
+                        <div class="detail-row">
+                            <strong>Status:</strong>
+                            <span class="status-badge ${report.status}">
+                                <i class="fas ${getStatusIcon(report.status)}"></i>
+                                ${getStatusName(report.status)}
+                            </span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Jenis Insiden:</strong>
+                            <span>${report.incidentType}</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Lokasi:</strong>
+                            <span>${report.location}</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Tanggal Kejadian:</strong>
+                            <span>${formatDate(report.incidentDate)}</span>
+                        </div>
+                        <div class="detail-row">
+                            <strong>Deskripsi:</strong>
+                            <p>${report.description}</p>
+                        </div>
+                        ${report.evidence && report.evidence.length > 0 ? `
+                            <div class="detail-row">
+                                <strong>Bukti:</strong>
+                                <span>${report.evidence.length} file terlampir</span>
+                            </div>
+                        ` : ''}
+                        <div class="detail-row">
+                            <strong>Dibuat:</strong>
+                            <span>${formatDate(report.createdAt)}</span>
+                        </div>
+                        ${report.lastUpdated ? `
+                            <div class="detail-row">
+                                <strong>Terakhir Diupdate:</strong>
+                                <span>${formatDate(report.lastUpdated)}</span>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+            
+            RELONS.showAlert(detailHtml, 'info');
+        }
+
+        function editReport(reportId) {
+            // Redirect to report page with edit mode
+            window.location.href = `report.html?edit=${reportId}`;
+        }
+    </script>
+
+    <style>
+        .main-content {
+            padding: 120px 0 80px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .search-section {
+            margin-bottom: 3rem;
+        }
+
+        .search-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .search-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-options {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-option input[type="radio"] {
+            margin: 0;
+        }
+
+        .search-input-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .search-input-group input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+
+        .search-input-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e5e7eb;
+            background: var(--white);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--primary-color);
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .report-card {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .report-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 1.5rem 0;
+        }
+
+        .report-id {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .status-badge.pending {
+            background: var(--warning-color);
+        }
+
+        .status-badge.in_progress {
+            background: var(--primary-color);
+        }
+
+        .status-badge.under_investigation {
+            background: var(--secondary-color);
+        }
+
+        .status-badge.resolved {
+            background: var(--success-color);
+        }
+
+        .status-badge.rejected {
+            background: var(--accent-color);
+        }
+
+        .report-content {
+            padding: 1rem 1.5rem;
+        }
+
+        .report-content h4 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .report-description {
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .report-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .report-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .no-reports,
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-light);
+            grid-column: 1 / -1;
+        }
+
+        .no-reports i,
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .search-result-header {
+            margin-bottom: 2rem;
+        }
+
+        .search-result-header h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .search-result-header p {
+            color: var(--text-light);
+        }
+
+        .search-tips {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .search-tips h4 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .search-tips ul {
+            color: var(--text-light);
+            padding-left: 1.5rem;
+        }
+
+        .search-tips li {
+            margin-bottom: 0.5rem;
+        }
+
+        .status-guide {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-top: 3rem;
+        }
+
+        .status-guide h3 {
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .status-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .status-item .status-badge {
+            margin-bottom: 1rem;
+            display: inline-flex;
+        }
+
+        .status-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .search-input-group {
+                flex-direction: column;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+
+            .filter-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .status-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .report-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</body>
+</html>

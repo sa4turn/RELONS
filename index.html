@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./RELONS.png" type="image/png">
+    <title>RELONS - Sistem Pelaporan Bullying UMN</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="./RELONS.png" alt="RELONS Logo" class="logo">
+                    <h1>RELONS</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Beranda</a></li>
+                    <li><a href="pages/education.html" class="nav-link">Edukasi</a></li>
+                    <li><a href="pages/forum.html" class="nav-link">Forum</a></li>
+                    <li><a href="pages/report.html" class="nav-link report-btn">Laporkan</a></li>
+                    <li><a href="pages/tracking.html" class="nav-link">Tracking</a></li>
+                    <li><a href="pages/news.html" class="nav-link">Berita</a></li>
+                    <li><a href="pages/contact.html" class="nav-link">Kontak</a></li>
+                    <li id="userMenu" class="nav-user-menu"></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Emergency Button -->
+    <div class="emergency-btn" id="emergencyBtn">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>DARURAT</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>RELONS</h1>
+                <h2>Sistem Pelaporan Bullying UMN</h2>
+                <p>Platform aman untuk melaporkan kasus bullying di lingkungan kampus Universitas Multimedia Nusantara. Lindungi diri dan teman-temanmu.</p>
+                <div class="hero-buttons">
+                    <a href="pages/report.html" class="btn btn-primary">Laporkan Sekarang</a>
+                    <a href="pages/education.html" class="btn btn-secondary">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Students Supporting Each Other">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Fitur Utama RELONS</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3>Pelaporan Anonim</h3>
+                    <p>Laporkan kasus dengan aman tanpa mengungkap identitas Anda</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Khusus Mahasiswa UMN</h3>
+                    <p>Login otomatis dengan email @student.umn.ac.id dan NIM</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Mode Guest</h3>
+                    <p>Laporkan dengan mengisi data diri untuk verifikasi dan tindak lanjut</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Upload Bukti</h3>
+                    <p>Sertakan foto, video, atau screenshot sebagai bukti pendukung</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Konsultasi langsung dengan konselor Student Support</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Tracking Status</h3>
+                    <p>Pantau perkembangan laporan Anda secara real-time</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container">
+            <h2>Statistik RELONS</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="150">0</div>
+                    <div class="stat-label">Laporan Ditangani</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="98">0</div>
+                    <div class="stat-label">% Tingkat Resolusi</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="24">0</div>
+                    <div class="stat-label">Jam Response Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Pengguna Aktif</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="quick-actions">
+        <div class="container">
+            <h2>Akses Cepat</h2>
+            <div class="actions-grid">
+                <a href="pages/report.html" class="action-card">
+                    <i class="fas fa-flag"></i>
+                    <h3>Buat Laporan</h3>
+                    <p>Laporkan kasus bullying yang Anda alami atau saksikan</p>
+                </a>
+                <a href="#" class="action-card" onclick="downloadHandbook()">
+                    <i class="fas fa-download"></i>
+                    <h3>Download Handbook</h3>
+                    <p>Unduh panduan lengkap tentang bullying dan sanksi</p>
+                </a>
+                <a href="pages/forum.html" class="action-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Forum Dukungan</h3>
+                    <p>Berbagi cerita dan dapatkan dukungan dari komunitas</p>
+                </a>
+                <a href="pages/contact.html" class="action-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Hubungi Konselor</h3>
+                    <p>Chat langsung dengan tim Student Support UMN</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RELONS</h3>
+                    <p>Sistem pelaporan bullying yang aman dan terpercaya untuk komunitas UMN.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Menu Utama</h4>
+                    <ul>
+                        <li><a href="pages/education.html">Edukasi</a></li>
+                        <li><a href="pages/forum.html">Forum</a></li>
+                        <li><a href="pages/report.html">Laporkan</a></li>
+                        <li><a href="pages/tracking.html">Tracking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Bantuan</h4>
+                    <ul>
+                        <li><a href="pages/contact.html">Kontak</a></li>
+                        <li><a href="#" onclick="showTerms()">Syarat & Ketentuan</a></li>
+                        <li><a href="#" onclick="showPrivacy()">Kebijakan Privasi</a></li>
+                        <li><a href="#" onclick="deleteAccount()">Hapus Akun</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontak Darurat</h4>
+                    <p><i class="fas fa-phone"></i> +62 21 5422 0808</p>
+                    <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b4c7c1c4c4dbc6c0f4c1d9da9ad5d79addd0">[email&#160;protected]</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Scientia Boulevard, Gading Serpong</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RELONS - Universitas Multimedia Nusantara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+            <span>Live Chat</span>
+            <i class="fas fa-chevron-up" id="chatToggle"></i>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    <p>Halo! Saya konselor Student Support. Ada yang bisa saya bantu?</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Ketik pesan Anda...">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="emergencyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-exclamation-triangle"></i> Mode Darurat</h2>
+            <p>Anda sedang dalam situasi darurat? Kami akan segera menghubungi tim Student Support dan melacak lokasi Anda.</p>
+            <div class="emergency-actions">
+                <button class="btn btn-danger" onclick="activateEmergency()">Ya, Saya Butuh Bantuan Segera</button>
+                <button class="btn btn-secondary" onclick="closeModal('emergencyModal')">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script type="module" src="./script.js"></script>
+    <script src="./js/auth.js"></script>
+    
+    <script>
+        // Emergency button functionality
+        document.getElementById('emergencyBtn').addEventListener('click', function() {
+            document.getElementById('emergencyModal').style.display = 'block';
+        });
+        
+        function activateEmergency() {
+            RELONS.showAlert('Tim darurat telah dihubungi! Bantuan sedang dalam perjalanan.', 'success');
+            closeModal('emergencyModal');
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        function downloadHandbook() {
+            RELONS.showAlert('Handbook sedang dipersiapkan untuk diunduh.', 'info');
+        }
+        
+        function showTerms() {
+            RELONS.showAlert('Syarat & Ketentuan: Dengan menggunakan RELONS, Anda setuju untuk menggunakan platform ini dengan bertanggung jawab.', 'info');
+        }
+        
+        function showPrivacy() {
+            RELONS.showAlert('Kebijakan Privasi: Data pribadi Anda akan dijaga kerahasiaannya dan hanya digunakan untuk keperluan sistem pelaporan.', 'info');
+        }
+        
+        function deleteAccount() {
+            if (auth.isAuthenticated() && !auth.isGuest()) {
+                if (confirm('Apakah Anda yakin ingin menghapus akun? Tindakan ini tidak dapat dibatalkan.')) {
+                    // In a real app, this would call an API
+                    auth.logout();
+                    RELONS.showAlert('Akun berhasil dihapus.', 'success');
+                }
+            } else if (auth.isGuest()) {
+                RELONS.showAlert('Guest tidak memiliki akun permanen untuk dihapus.', 'info');
+            } else {
+                RELONS.showAlert('Silakan login terlebih dahulu.', 'warning');
+            }
+        }
+        
+        // Animate statistics on scroll
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const increment = target / 50;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current);
+                }, 50);
+            });
+        }
+        
+        // Trigger animation when statistics section is visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        
+        const statsSection = document.querySelector('.statistics');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
