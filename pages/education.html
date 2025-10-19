@@ -17,7 +17,7 @@
                 </div>
                 <ul class="nav-menu">
                     <li><a href="../index.html" class="nav-link">Beranda</a></li>
-                    <li><a href="education.html" class="nav-link">Edukasi</a></li>
+                    <li><a href="education.html" class="nav-link active">Edukasi</a></li>
                     <li><a href="forum.html" class="nav-link">Forum</a></li>
                     <li><a href="report.html" class="nav-link report-btn">Laporkan</a></li>
                     <li><a href="tracking.html" class="nav-link">Tracking</a></li>
@@ -365,6 +365,7 @@
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../script.js"></script>
+    <script src="../js/navigation.js"></script>
     <script>
         // Quiz functionality
         const quizData = [
@@ -455,6 +456,17 @@
         }
 
         // Download functions
+        function downloadHandbook() {
+            RELONS.showAlert('Handbook anti-bullying sedang diunduh...', 'success');
+            
+            const link = document.createElement('a');
+            link.href = 'data:text/plain;charset=utf-8,HANDBOOK ANTI-BULLYING UMN\n\nPanduan lengkap untuk mencegah dan menangani kasus bullying di lingkungan kampus.';
+            link.download = 'Handbook_Anti_Bullying_UMN.txt';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
         function downloadSanctions() {
             RELONS.showAlert('Daftar sanksi sedang diunduh...', 'success');
             
