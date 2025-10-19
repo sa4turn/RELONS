@@ -23,7 +23,7 @@
                     <li><a href="report.html" class="nav-link report-btn">Laporkan</a></li>
                     <li><a href="tracking.html" class="nav-link">Tracking</a></li>
                     <li><a href="news.html" class="nav-link">Berita</a></li>
-                    <li><a href="contact.html" class="nav-link">Kontak</a></li>
+                    <li><a href="contact.html" class="nav-link active">Kontak</a></li>
                 </ul>
                 <div class="hamburger">
                     <span></span>
@@ -351,6 +351,7 @@
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../script.js"></script>
+    <script src="../js/navigation.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             initializeContact();
@@ -466,7 +467,7 @@
             RELONS.saveToLocalStorage('videoCallAppointments', appointment);
             
             // Close modal and clear form
-            RELONS.closeModal('videoCallModal');
+            closeModal('videoCallModal');
             e.target.reset();
             
             RELONS.showAlert('Video call berhasil dijadwalkan! Anda akan menerima link meeting melalui email.', 'success');
@@ -505,6 +506,13 @@
                 faqItem.classList.add('active');
                 answer.style.display = 'block';
                 icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
             }
         }
     </script>
@@ -881,6 +889,40 @@
             color: var(--text-dark);
             line-height: 1.6;
             margin: 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--accent-color);
         }
 
         @media (max-width: 768px) {
